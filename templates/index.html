@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <title>Split Wordle — Play vs Symbolic AI</title>
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+  <main class="container">
+    <header>
+      <h1>Split Wordle</h1>
+      <p class="sub">Left: You — Right: Symbolic AI. Guess the 5-letter word. 6 attempts each.</p>
+      <div class="controls">
+        <button id="newBtn">New Game</button>
+        <div id="status" class="status">Ready</div>
+      </div>
+    </header>
+
+    <section class="boards">
+      <div class="board-panel" id="playerPanel">
+        <h2>You</h2>
+        <div class="board" id="playerBoard"></div>
+      </div>
+
+      <div class="board-panel grayed" id="aiPanel">
+        <h2>AI</h2>
+        <div class="board" id="aiBoard"></div>
+      </div>
+    </section>
+
+    <section class="keyboard-area">
+      <div id="keyboard" class="keyboard"></div>
+      <div class="input-row">
+        <input id="guessInput" maxlength="5" autocomplete="off" placeholder="Type a 5-letter guess" />
+        <button id="guessBtn">Guess</button>
+      </div>
+    </section>
+
+    <footer>
+      <p>Symbolic AI uses feedback filtering + letter-frequency scoring. Enjoy!</p>
+    </footer>
+  </main>
+
+<script>
+const initialState = {{ state|safe }};
+</script>
+<script src="{{ url_for('static', filename='script.js') }}"></script>
+</body>
+</html>
